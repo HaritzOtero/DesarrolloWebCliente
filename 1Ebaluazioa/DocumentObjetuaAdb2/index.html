@@ -1,0 +1,21 @@
+<html>
+    <head>
+    <title>Estekak aldatzen</title>
+    </head>
+    <body>
+        <ul>
+            <li><a href="bat.html">Lehenengo esteka</a></li>
+            <li ><a href="bi.html" target="new">Bigarren esteka</a></li>
+            <li><a href="hiru.html">Hirugarren esteka</a></li>
+        </ul>
+        <script>
+            var nodos=document.getElementsByTagName( "a" )
+                for ( var i=0; i<nodos.length; ++i )
+                { nodos[i].onmouseover=function()
+                    { this.style.backgroundColor='green' }
+                    nodos[i].onmouseout=function()
+                    { this.style.backgroundColor='' }
+                }
+        </script>
+    </body>
+</html>

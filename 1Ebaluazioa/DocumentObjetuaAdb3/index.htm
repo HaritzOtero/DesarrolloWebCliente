@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Accediendo a la propiedad innerHTML</title>
+  </head>
+  <body>
+    <div id="paragrafoa">
+      Paragrafo honen barruan gauza asko daude:
+      <ul>
+        <li>Zerrenda</li>
+        <li>bat</li>
+      </ul>
+      <table border = "1">
+        <tr>
+          <td>Eta</td>
+          <td>taula bat</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      function aldatu() {
+        var el = document.getElementById("paragrafoa");
+        el.innerHTML =
+          "Eta osorik aldatzen dut" +
+          "<ol><li>nahita</li><li>zerrenda bat sartu</li></ol>";
+      }
+      setTimeout("aldatu()", 1000);
+    </script>
+  </body>
+</html>

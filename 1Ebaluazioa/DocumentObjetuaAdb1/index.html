@@ -1,0 +1,21 @@
+<html>
+    <head>
+    <title>Objektuak eta propietateak</title>
+    </head>
+    <body>
+        <h3 id="intro">Introducción </h3>
+            <script>
+                var nodo=document.getElementById( "intro" )
+                nodo.style.color='red'
+                nodo.onmouseover=function() // funcion anonima
+                { this.style.color='blue' } //cambia color a  azul al pasar por encima el raton
+                nodo.onmouseout = function() // cambia el color al rojoal salir
+                { this.style.color='red' }
+            </script>
+                <img src="1.gif" id="img1">
+            <script>            
+                setTimeout( "document.getElementById('img1').src='2.gif'", 3000 ) //Cambia la imagen a los tres segundos                  
+            </script>
+
+    </body>
+</html>
