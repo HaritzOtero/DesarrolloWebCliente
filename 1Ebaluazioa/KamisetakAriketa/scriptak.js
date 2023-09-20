@@ -1,25 +1,30 @@
-function aldatuAtzera(){
+var imagenes = ["img/6.jpg", "img/9.jpg", "img/11.jpg"];
+var indice = 0;
+var imagen = document.getElementById("camiImg");
+var nombreArchivoElement = document.getElementBy("nombreArchivo");
 
-    var imagen = document.getElementById("1");
-
-    if (imagen.src === "http://127.0.0.1:5500/img/6.jpg") {
+function aldatuAtzera() {
+    if (indice > 0) {
+        indice--;
+        imagen.src = imagenes[indice];
+        actualizarNombreArchivo();
+    } else {
         alert("Ezin da atzera egin");
-    } else if (imagen.src === "http://127.0.0.1:5500/img/9.jpg") {
-        imagen.src = "http://127.0.0.1:5500/img/6.jpg";
-    } else if (imagen.src === "http://127.0.0.1:5500/img/11.jpg") {
-        imagen.src = "http://127.0.0.1:5500/img/9.jpg";
     }
 }
 
-function aldatuAurrera(){
-    
-    var imagen = document.getElementById("1");
-
-    if (imagen.src === "http://127.0.0.1:5500/img/6.jpg") {
-        imagen.src = "http://127.0.0.1:5500/img/9.jpg";
-    } else if (imagen.src === "http://127.0.0.1:5500/img/9.jpg") {
-        imagen.src = "http://127.0.0.1:5500/img/11.jpg";
-    } else if (imagen.src === "http://127.0.0.1:5500/img/11.jpg") {
+function aldatuAurrera() {
+    if (indice < imagenes.length - 1) {
+        indice++;
+        imagen.src = imagenes[indice];
+        actualizarNombreArchivo();
+    } else {
         alert("Ezin da aurrera egin");
     }
+}
+
+function actualizarNombreArchivo() {
+    var nombreImagen = imagenes[indice];
+    var nombreSinExtension = nombreImagen.split("/").pop().split(".")[0];
+    nombreArchivoElement.textContent = nombreSinExtension;
 }
