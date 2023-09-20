@@ -1,7 +1,7 @@
 var imagenes = ["img/6.jpg", "img/9.jpg", "img/11.jpg"];
 var indice = 0;
 var imagen = document.getElementById("camiImg");
-var nombreArchivoElement = document.getElementBy("nombreArchivo");
+var nombreArchivoElement = document.getElementById("nombreArchivo");
 
 function aldatuAtzera() {
     if (indice > 0) {
