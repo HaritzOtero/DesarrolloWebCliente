@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <!--bootstrap erabilita-->
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!--adibide bat-->
+    <form id="myform" action="enviar.php" onsubmit="return enviar();">
+        <label for="comando">Comando: </label>
+        <input type="text" id="comando"/> </br>
+        <button>Enviar formulario</button>
+    </form>
+    <script>
+        function enviar(){
+            var formulario = document.getElementById("myform");
+            var dato = document.getElementById("comando");
+            if (dato.value=="enviar"){
+                alert("Enviando el formulario");
+                formulario.submit();
+                return true;
+            } else {
+                alert("No se envía el formulario");
+                return false;
+            }
+        }
+    </script>
+
+    <!--Beste adibide bat-->
+    Mezu bat sartu eta Google-en bilatuko du baina www.uni.eus domeinuan bakarrik
+    <form name="n1" id="i1" action="http://www.google.es/search">
+        <label for="q">Bilatzeko testua:</label>
+        <input type="text" name="q" id="q" size="40">
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        el = document.getElementById("i1")
+        el.onsubmit = function test() {
+            if (el.q.value.length > 0) {
+                var testua = el.q.value;
+                el.q.value = "site:www.uni.eus " + testua;
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+    <!--checkbox guztiak aukeratzen -->
+    checkbox automatikoki aldatzen da
+    <form name="n1" id="i2" action="http://www.google.es/search">
+        <input type="checkbox" name="seleccionar">Aukeratu denak<br/><br/>
+        <input type="checkbox" name="linea">Línea 1<br/>
+        <input type="checkbox" name="linea">Línea 2<br/>
+        <input type="checkbox" name="linea">Línea 3<br/>
+    </form>
+    <script>
+        el=document.getElementById("i2")
+        el.seleccionar.onclick=function()
+        { for( var i=0; i<el.linea.length; i++ )
+        { el.linea[i].checked=el.seleccionar.checked; } }
+    </script>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

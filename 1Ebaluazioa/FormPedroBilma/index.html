@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picapiedra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+</head>
+
+<body>
+    <div class="container">
+        <!--bootstrap erabilita-->
+        <form>
+            <div class="row">
+                <div class="col-md-6" id="izquierda">
+                    <label>
+                        Zuzentzeko era:    
+                        <input type="radio" id = "generoHombre" name="genero" value="gizon"style="margin-left: 10px;" checked = "true" onchange="CambiarFoto()"> Gizona
+                        <input type="radio" id = "generoMujer" name="genero" value="emakume" onchange= "CambiarFoto()" > Emakumea
+                    </label>
+                      <br>
+                      <br>
+                      
+                      <label for="izena">Izena:</label>
+                      <input type="text" id="izena" name="izena">
+    
+                      <br>
+                      <br>
+                      
+                      <label for="abizena">Abizena:</label>
+                      <input type="text" id="abizena" name="abizena">
+    
+                      <br>
+                      <br>
+                      
+                      <label for="Helbidea">Helbidea :</label>
+                      <input type="text" id="Helbidea" name="Helbidea">
+    
+                      <br>
+                      <br>
+    
+                      <label for="hiri">Aukeratu hiri bat</label>
+                      <select id="hiri" name="hiri">
+                          <option value="Madrid">Madrid</option>
+                          <option value="Bilbo">Bilbo</option>
+                          <option value="Eibar">Eibar</option>
+                          <option value="Ermua">Ermua</option>
+                          <option value="Donosti">Donosti</option>
+                      </select>
+    
+                      <br>
+                      <br>
+    
+                      <label for="gustokoena">Aukeratu gustokoenak: </label>
+                      <input type="checkbox" id="gustokoena" name="gustokoena" value = "pelikulak">Pelikulak
+                      <input type="checkbox" id="gustokoena" name="gustokoena" value = "liburuak" style="margin-left: 10px;">Liburuak
+                      
+                </div>
+                <div class="col-md-6" id="derecha">
+                    <img src="img/caraHombre.jpg" style="border: 3px solid black;" id = "foto">
+        
+                    <div id = "datosEnviados">
+        
+                    </div>
+                </div>
+            </div>
+        </form>         
+       
+        
+        <button type="submit" class="btn btn-primary" onclick="EscribirDatos()">Submit</button>
+    </div>
+
+    <script src="pedro.js"></script>
+
+</body>
+
+</html>
