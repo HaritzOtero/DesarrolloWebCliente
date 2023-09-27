@@ -1,0 +1,26 @@
+<body>
+    <p id="test">This is some <b>bold</b> text in a paragraph.</p>
+    <p>Name: <input type="text" id="box" value="Mickey Mouse"></p>
+    <p><a href="https://www.w3schools.com" id="w3s">W3Schools.com</a></p>
+    <button id="btn1">Show Text</button>
+    <button id="btn2">Show HTML</button>
+    <button id="btn3">Show Value</button>
+    <button id="btn4">Show href Value</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                alert("Text: " + $("#test").text());
+            });
+            $("#btn2").click(function () {
+                alert("HTML: " + $("#test").html());
+            });
+            $("#btn3").click(function () {
+                alert("Value: " + $("#box").val());
+            });
+            $("#btn4").click(function () {
+                alert($("#w3s").attr("href"));
+            });
+        });
+    </script>
+</body>
