@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Elementos</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <input type="text" id="elemento" placeholder="Gehitu karritora">
+    <br>
+    <br>
+    <button id="agregar">Gehitu</button>
+    <button id="resaltar">Erosketa egin</button>
+    
+    <ul id ="lista">
+
+    </ul>
+   
+
+    <script>
+        $(document).ready(function () {
+            var elementos = [];
+
+            $("#agregar").click(function () {
+                var elemento = $("#elemento").val();
+                if (elemento !== "") {
+                    elementos.push(elemento);
+                    $("#lista").append("<li>" + elemento + "</li>");
+                    $("#elemento").val("");
+                }
+            });
+
+            $("#resaltar").click(function () {
+                $("#lista").css({
+                    "background-color": "green",
+                    "border": "2px solid black"
+                });
+
+                alert("Erosketa listo dago")
+                
+            });
+        });
+    </script>
+</body>
+</html>
