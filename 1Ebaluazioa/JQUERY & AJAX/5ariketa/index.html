@@ -1,0 +1,43 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efectos CSS con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <span style="outline: 1px solid black" id="capa0">Capa donde cambiaremos la propiedad outlineWidth</span><br>
+    <input type="button" id="boton0" value="Cambiar a 15px el grosor del borde exterior del elemento">
+    <br><br>
+    <span style="border: 1px solid black" id="capa1">Capa donde cambiaremos la propiedad borderWidth</span><br>
+    <input type="button" id="boton1" value="Cambiar a 10px el grosor del borde del elemento en 3 segundos">
+    <br><br>
+    <span style="border: 1px solid black" id="capa2">Capa donde cambiaremos la propiedad borderBottomWidth</span><br>
+    <input type="button" id="boton2" value="Cambiar a 20px el grosor del borde inferior del elemento en 5 segundos y callback">
+    <br><br>
+    <span style="border: 1px solid black" id="capa3">Capa donde cambiaremos la propiedad borderTopWidth</span><br>
+    <input type="button" id="boton3" value="Cambiar a 15px el grosor del borde superior del elemento y callback">
+    <br><br>
+    <span style="border: 1px solid black" id="capa4">Capa donde cambiaremos la propiedad borderLeftWidth y borderRightWidth</span><br>
+    <input type="button" id="boton4" value="Cambiar a 10px el grosor del borde izquierdo y a 20px el derecho">
+
+    <script>
+        $(document).ready(function(){
+            $("#boton0").click(function(){
+                $("#capa0").animate({"outline-width":"15px"});
+            });
+            $("#boton1").click(function(){
+                $("#capa1").animate({"border-width":"10px"},3000);
+            });
+            $("#boton2").click(function(){
+                $("#capa2").animate({"border-bottom-width":"20px"},5000,function() {alert('Efecto terminado!');});
+            });
+            $("#boton3").click(function(){
+                $("#capa3").animate({"border-top-width":"15px"},function() {alert('Efecto terminado!');});
+            });
+            $("#boton4").click(function(){
+                $("#capa4").animate({"border-left-width":"10px", "border-right-width":"20px"});
+            });
+        });
+    </script>
+</body>
+</html>
