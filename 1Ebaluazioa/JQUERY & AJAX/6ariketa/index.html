@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url("img/spacestars.jpg");
+        }
+
+        #cohete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease; /* Transición suave */
+}
+    </style>
+</head>
+
+<body>
+    <img src="img/rocket.png" id="cohete">
+
+</body>
+<script>
+const cohete = document.getElementById('cohete');
+let posX = 50;
+let posY = 50;
+let rotation = 0;
+
+document.addEventListener('keydown', moverCohete);
+
+function moverCohete(event) {
+    const velocidad = 10;
+
+    switch (event.key) {
+        case 'w':
+            $('#cohete').animate({top:"-=100px"},'fast')
+            break;
+        case 's':
+        $('#cohete').animate({top:"+=100px"},'fast')
+            break;
+        case 'a':
+        $('#cohete').animate({left:"-=100px"},'fast')
+            break;
+        case 'd':
+        $('#cohete').animate({left:"+=100px"},'fast')
+            break;
+        default:
+            return;
+    }
+
+    cohete.style.transform = `translate(${posX}%, ${posY}%) rotate(${rotation}deg)`;
+}
+</script>
+</html>
