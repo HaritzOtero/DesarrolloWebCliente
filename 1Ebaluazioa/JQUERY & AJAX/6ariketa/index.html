@@ -26,34 +26,44 @@
 
 </body>
 <script>
-const cohete = document.getElementById('cohete');
-let posX = 50;
-let posY = 50;
-let rotation = 0;
+    const cohete = $("#cohete"); /*Ponemos la posicion 0,0 del cohete en la pantalla, es decir la parte de arriba a al izquierda*/
+    let posX = 0;
+    let posY = 0;
 
-document.addEventListener('keydown', moverCohete);
-
-function moverCohete(event) {
-    const velocidad = 10;
-
-    switch (event.key) {
-        case 'w':
-            $('#cohete').animate({top:"-=100px"},'fast')
-            break;
-        case 's':
-        $('#cohete').animate({top:"+=100px"},'fast')
-            break;
-        case 'a':
-        $('#cohete').animate({left:"-=100px"},'fast')
-            break;
-        case 'd':
-        $('#cohete').animate({left:"+=100px"},'fast')
-            break;
-        default:
-            return;
+    function moveRocket() {
+        cohete.css("left", posX + "px");
+        cohete.css("top", posY + "px");
     }
 
-    cohete.style.transform = `translate(${posX}%, ${posY}%) rotate(${rotation}deg)`;
-}
+    $(document).keydown(function(event) {
+    switch (event.key) {
+        case "ArrowLeft":
+        case "a":
+            posX -= 100;
+            cohete.css("transform", "rotate(-90deg)");/* Girar hacia la izquierda */
+            cohete.animate({ left: posX + "px" }, 1000);/* Moverlo 100 pixeles a la izquierda(X)*/
+            break;
+        case "ArrowRight":
+        case "d":
+            posX += 100;
+            cohete.css("transform", "rotate(90deg)");/* Girar hacia la derecha */
+            cohete.animate({ left: posX + "px" }, 1000);/* Moverlo 100 pixeles a la derecha(X)*/
+            break;
+        case "ArrowUp":
+        case "w":
+            posY -= 100;
+            cohete.css("transform", "rotate(0deg)");/* Girar hacia arriba */
+            cohete.animate({ top: posY + "px" }, 1000);/* Moverlo 100 pixeles hacia arriba(Y)*/
+            break;
+        case "ArrowDown":
+        case "s":
+            posY += 100;
+            cohete.css("transform", "rotate(180deg)");/* Girar hacia abajo */
+            cohete.animate({ top: posY + "px" }, 1000);/* Moverlo 100 pixeles hacia abajo(Y)*/
+            break;
+    }
+    });
+
+    moveRocket();
 </script>
 </html>
