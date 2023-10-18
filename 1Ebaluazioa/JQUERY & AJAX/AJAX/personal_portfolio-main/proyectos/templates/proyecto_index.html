@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Proyectos</h1>
+<div class="row">
+    {% for proyecto in proyectos %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static proyecto.imagen %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ proyecto.titulo }}</h5>
+                <p class="card-text">{{ proyecto.descripcion }}</p>
+                <p class="card-text">Teknologia: <span id="{{ proyecto.id }}">{{ proyecto.tecnologia }}</span></p>
+                <p class="card-text">Nahi duzu teknologia aldatu?</p>
+                <form>
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ proyecto.id }}"/>
+                    <input type="text" name="tecnologia"/>
+                    <input type="submit" value="Aldatu"/>
+                </form>
+                <p class="card-text">Nahi dituzu galderak ikusi? Egin klik
+                    <a id="{{ proyecto.pk }}" href="" class="btn btn-primary galdera">
+                        hemen
+                    </a>
+                    <ul id="lista{{ proyecto.id }}"></ul>
+                </p>
+                <br>
+                <a href="{% url 'proyecto_detail' proyecto.pk %}" class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock page_content%}
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(document).on('submit', 'form', function (e) {
+            e.preventDefault();
+            datuak = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'post_teknologia' %}",
+                data: datuak,
+                success: function (response) {
+                    nodoa = "#" + response.id;
+                    $(nodoa).html(response.tecnologia);
+                },
+                error: function (response) {
+                    alert("Ezin da aldatu. Saiatu beranduago" + response);
+                }
+
+            })
+        })
+        $("a.galdera").click(function (e) {
+            e.preventDefault();
+            let csrftoken = '{{ csrf_token }}'
+            datuak = {id: $(this).prop("id")};
+            $.ajax({
+                type: 'POST',
+                headers:{'X-CSRFToken':csrftoken},
+                url: "{% url 'proyecto_galderak' %}",
+                data: datuak,
+                dataType: 'json',
+                success: function (response) {
+                    nodoag = "#lista" + response[0].proyecto_id;
+                    listaosoa="<ul>";
+                    for( let i=0; i<response.length; i++){
+                        listaosoa+="<li>";
+                        listaosoa+=response[i].pregunta_texto;
+                        listaosoa+="</li>";
+                    }
+                    listaosoa+="</ul>";
+                    $(nodoag).html(listaosoa);
+                },
+                error: function (response) {
+                    alert("Ezin da atzitu. Saiatu beranduago" + response);
+                }
+            })
+        })
+    })
+</script>
+{% endblock javascript %}

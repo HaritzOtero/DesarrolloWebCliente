@@ -1,0 +1,117 @@
+ 1. upgrade update egin
+
+sudo apt upgrade/update
+
+2. instalatu apache
+
+sudo  apt install apache2
+
+3. probatu dabilen
+
+mozilan hocalhost bilatu eta ikusi ea it works agertzen den
+
+4. var/www karpetaren barruan karpeta bat sortu html-arentzat orriaren izenarekin
+
+sudo mkdir /var/www/karpetaren izena 
+
+5. kapetaren barruan sartu eta html fitxategia sortu eta aldatu
+
+cd /var/www/karpetaren izena
+
+sudo touch index.html
+
+sudo nano fitx.html
+
+idatzi behar dena
+
+6. baimenak eman 
+
+sudo chmod -R 755 /var/www
+
+7. copiatu 000-default.conf eta sortu web-entzat 
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/"html-aren izena".conf
+
+8. aldatu .conf fitxategi berria .conf
+
+cd
+sudo nano /etc/apache2/sites-available/"html-aren izena".conf
+
+horrela jarri:
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName www.nireweb1.com
+    ServerAlias nireweb1.com
+    DocumentRoot /var/www/nireweb1
+
+</VirtualHost>
+
+portua aldatu nahi bada aldatu conf fitxategian eta /etc/apache2/ports.conf en 	Listen (portua) jarri.´
+
+9. etc/hosts aldatu:
+
+127.0.0.1 website1.com
+
+10.Habilitar pagina
+
+cd /etc/apache/sites-available/
+
+a2ensite website1.conf
+
+//https 
+
+OpenSSL-rekin ziurtagiria sortu:
+
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nireweb1.key -out /etc/ssl/certs/nireweb1.crt
+
+sudo a2enmod ssl
+
+aldatu nireweb1.conf
+
+sudo nano /etc/apache2/sites-available/nireweb1.conf
+
+<VirtualHost *:443>
+
+ServerAdmin webmaster@localhost
+    ServerName www.nireweb1.com
+    ServerAlias nireweb1.com
+    DocumentRoot /var/www/nireweb1
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/bakeorlegia-selfsigned.crt
+    SSLCertificateKeyFile /etc/ssl/private/bakeorlegia-selfsigned.key
+
+</VirtualHost>
+
+Apache berrabiarazi eta badabilela ikusi:
+$ sudo systemctl restart apache2
+$ sudo systemctl status apache2
+
+
+// autentifikazioa
+
+1. (instalatu apache2-utils)
+
+sudo apt install apache2-utils
+
+2.erabitzileentzat fitxategia sortu erabiltzile eta pasahitzakin
+
+sudo mkdir /etc/apache2/pasahitzak
+
+$ sudo htpasswd -c /etc/apache2/pasahitzak/nireweb1erabiltzaileak.txt markel
+
+>New Password: markel
+
+3.Apachen Autentikazio Basikoa ezaugarritu:
+
+sudo nano /etc/apache2/sites-available/nireweb1.conf
+
+<Directory "/var/www/nireweb1">
+        AuthType Basic
+        AuthName "Sarbide mugatua"
+        AuthUserFile /etc/apache2/pasahitzak/nireweb1erabiltzaileak.txt
+        Require v
