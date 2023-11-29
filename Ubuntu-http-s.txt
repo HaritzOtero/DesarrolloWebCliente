@@ -2,7 +2,7 @@
 
 sudo apt upgrade/update
 
-2. instalatu apache
+2. instalatu apachealoka
 
 sudo  apt install apache2
 
@@ -23,9 +23,9 @@ sudo touch index.html
 sudo nano fitx.html
 
 idatzi behar dena
-
+book4u
 6. baimenak eman 
-
+ rsa
 sudo chmod -R 755 /var/www
 
 7. copiatu 000-default.conf eta sortu web-entzat 
@@ -38,7 +38,7 @@ cd
 sudo nano /etc/apache2/sites-available/"html-aren izena".conf
 
 horrela jarri:
-
+cd 
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
     ServerName www.nireweb1.com
@@ -59,6 +59,7 @@ cd /etc/apache/sites-available/
 
 a2ensite website1.conf
 
+a2desite - deshabilitar
 //https 
 
 OpenSSL-rekin ziurtagiria sortu:
@@ -82,8 +83,8 @@ ServerAdmin webmaster@localhost
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 
     SSLEngine on
-    SSLCertificateFile /etc/ssl/certs/bakeorlegia-selfsigned.crt
-    SSLCertificateKeyFile /etc/ssl/private/bakeorlegia-selfsigned.key
+    SSLCertificateFile /etc/ssl/certs/nireweb1.crt
+    SSLCertificateKeyFile /etc/ssl/private/nireweb1-selfsigned.key
 
 </VirtualHost>
 
@@ -115,3 +116,4 @@ sudo nano /etc/apache2/sites-available/nireweb1.conf
         AuthName "Sarbide mugatua"
         AuthUserFile /etc/apache2/pasahitzak/nireweb1erabiltzaileak.txt
         Require v
+</Directory>
