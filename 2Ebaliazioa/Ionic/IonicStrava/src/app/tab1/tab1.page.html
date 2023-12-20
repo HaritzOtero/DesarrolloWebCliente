@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Kluba
+    </ion-title>
+    <ion-progress-bar type="indeterminate" *ngIf="showLoader"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Kluba</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let kluba of klubak">
+        <ion-item-divider color="light">
+          <ion-row>
+            <ion-col size="6">
+              <h2>{{kluba.name}}</h2>
+              <ion-badge color="success">{{kluba.club_type}}</ion-badge>&nbsp;&nbsp;
+              <ion-icon [name]="kluba.private ? 'lock-closed-outline' : 'lock-open-outline'"></ion-icon>
+              <br>
+              <h4>{{kluba.description}}</h4>
+              <p>Kirol mota: <i><b>{{kluba.sport_type}}</b></i></p>
+              <p>Partehartzaileak:
+                <ion-badge
+                  [color]="kluba.member_count>= 10 ? 'primary' : (kluba.member_count == 0 ? 'danger' : 'warning')">{{kluba.member_count}}</ion-badge>
+              </p>
+              <ion-button color="primary" [routerLink]="['kluba', kluba.id]">
+                <ion-icon name="information-circle-outline"></ion-icon>Jarduerak ikusi
+           </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-img
+                [attr.src]="kluba.cover_photo_small == null ? '../../assets/img/generikoa.jpg' : kluba.cover_photo_small "></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-item-divider>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="success" [routerLink]="['/kluba-gehitu']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

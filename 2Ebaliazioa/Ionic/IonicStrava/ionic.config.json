@@ -1,0 +1,7 @@
+{
+  "name": "IonicStrava",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

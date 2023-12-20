@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>klubaGehitu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">klubaGehitu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">kluba gehitzeko formularioa</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+  
+      <ion-item>
+        <ion-label position="stacked">Izena</ion-label>
+        <ion-input [(ngModel)]="kluba.name" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Argazkia</ion-label>
+        <ion-input [(ngModel)]="kluba.cover_photo_small" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Kirol Mota</ion-label>
+        <ion-input [(ngModel)]="kluba.sport_type" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Pribatua</ion-label>
+        <ion-input [(ngModel)]="kluba.privatea" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Partehartzaileak</ion-label>
+        <ion-input [(ngModel)]="kluba.member_count" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Deskripzioa</ion-label>
+        <ion-input [(ngModel)]="kluba.description" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Klub Mota</ion-label>
+        <ion-input [(ngModel)]="kluba.club_type" type="text"></ion-input>
+      </ion-item>
+  
+    </ion-list>
+  
+    <ion-button expand="full" (click)="gehituForm()">Kluba Gehitu</ion-button>
+  
+  </ion-content>
+</ion-content>

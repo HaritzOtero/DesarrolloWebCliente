@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tab1-jarduerak</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content class="ion-padding">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col
+          ><p><b>Atleta</b></p></ion-col
+        >
+        <ion-col
+          ><p><b>Izena</b></p></ion-col
+        >
+        <ion-col
+          ><p><b>Mota</b></p></ion-col
+        >
+        <ion-col
+          ><p><b>mt.</b></p></ion-col
+        >
+        <ion-col
+          ><p><b>sg.</b></p></ion-col
+        >
+      </ion-row>
+      <ion-row *ngFor="let aktibitatea of kluba.jarduerak">
+        <ion-col> {{aktibitatea.atleta_id}} </ion-col>
+        <ion-col> {{aktibitatea.name}} </ion-col>
+        <ion-col> {{aktibitatea.type}} </ion-col>
+        <ion-col> {{aktibitatea.distance}} </ion-col>
+        <ion-col> {{aktibitatea.moving_time}} </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button color="primary" size="small" (click)="goBack()"
+      >Bueltatu</ion-button
+    >
+  </ion-content>
+</ion-content>
