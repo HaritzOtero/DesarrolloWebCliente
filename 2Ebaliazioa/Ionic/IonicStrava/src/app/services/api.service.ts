@@ -220,4 +220,22 @@ export class ApiService {
   async addTransaction(transaction: Transaction) {
     this.transactionService.addTransaction(transaction);
   }
+
+  async addJarduera(jarduera: Jarduera) {
+    let data = [jarduera.name, jarduera.distance, jarduera.moving_time, jarduera.elapsed_time, jarduera.type, jarduera.workout_type, jarduera.atleta_id];
+    const res = await this.storage.executeSql('INSERT INTO jardueras (name, distance, moving_time, elapsed_time, type, workout_type, atleta_id) VALUES (?, ?, ?, ?, ?, ?, ?)', data);
+  
+    const jsonString: string = JSON.stringify(payload);
+    let transaction: Transaction = {
+      endpoint : this.url,
+      method : "POST",
+      payload : jsonString,
+      };
+    this.addTransaction(transaction);
+    if (this.networkService.getStatus()){
+      //online gaude. Sinkronizatu
+      this.syncService.synchronize();
+    }
+    this.getJarduerak();
+  }
 }

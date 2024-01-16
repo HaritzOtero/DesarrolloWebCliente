@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>jardueraGehitu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">jardueraGehitu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+  
+      <ion-item>
+        <ion-label position="stacked">Izena</ion-label>
+        <ion-input [(ngModel)]="jarduera.name" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Distantzia</ion-label>
+        <ion-input [(ngModel)]="jarduera.distance" type="int"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Denbora mugimenduan</ion-label>
+        <ion-input [(ngModel)]="jarduera.moving_time" type="int"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Denbora totala</ion-label>
+        <ion-input [(ngModel)]="jarduera.elapsed_time" type="int"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Partehartzaileak</ion-label>
+        <ion-input [(ngModel)]="jarduera.type" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Deskripzioa</ion-label>
+        <ion-input [(ngModel)]="jarduera.workout_type" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Klub Mota</ion-label>
+        <ion-input [(ngModel)]="jarduera.atleta_id" type="text"></ion-input>
+
+
+      </ion-item>
+  
+    </ion-list>
+  
+    <ion-button expand="full" (click)="gehituForm()">Jarduera Gehitu</ion-button>
+  
+  </ion-content>
+
+</ion-content>
