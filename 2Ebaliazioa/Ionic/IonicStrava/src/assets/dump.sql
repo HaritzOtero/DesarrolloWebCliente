@@ -38,6 +38,7 @@ INSERT or IGNORE INTO jardueras (id, name, distance, moving_time, elapsed_time, 
 (1, 'prueba bat', 10.00, 2.00, 2.00, 'korrika', 1, '11111111A');
 INSERT or IGNORE INTO jardueras (id, name, distance, moving_time, elapsed_time, type, workout_type, atleta_id) VALUES
 (2, 'beste jarduera bat', 30.00, 1.50, 2.00, 'bizikletan', 2, '22222222B');
+
 CREATE TABLE IF NOT EXISTS pending_transactions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     endpoint TEXT NOT NULL,

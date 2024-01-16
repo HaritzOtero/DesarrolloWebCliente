@@ -6,13 +6,11 @@ import { Network } from '@capacitor/network';
 })
 export class NetworkService {
   connected = true;
+  constructor() {  Network.addListener('networkStatusChange', async status => {
+    this.connected = status.connected;});
+  }
 
-  constructor() {
-    Network.addListener('networkStatusChange', async status => {
-      this.connected = status.connected;
-    });
-   }
-   getStatus(): boolean {
+  getStatus(): boolean {
     return this.connected;
   }
 }

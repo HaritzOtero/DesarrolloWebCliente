@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Kluba } from '../classes/kluba';
 import { ApiService } from '../services/api.service';
+
 import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-kluba-gehitu',
   templateUrl: './kluba-gehitu.page.html',
   styleUrls: ['./kluba-gehitu.page.scss'],
-}) 
+})
 export class KlubaGehituPage implements OnInit {
 
   constructor(private apiService: ApiService, private navCtrl: NavController) { }
@@ -38,6 +39,7 @@ export class KlubaGehituPage implements OnInit {
       jarduerak: []
     };
   }
+
   ngOnInit() {
   }
 

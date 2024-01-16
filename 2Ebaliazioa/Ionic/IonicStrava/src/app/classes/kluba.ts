@@ -1,5 +1,4 @@
-import { Jarduera } from "./jarduera";
-
+import { Jarduera } from './jarduera';
 export class Kluba {
     id!: number;
     name!: string;

@@ -93,6 +93,24 @@ export class ApiService {
       console.error ("errorea getKlubak", error);
     }
   }
+
+  //eliminar una jarduera
+  async deleteJarduera(id: any) {
+    const _ = await this.storage.executeSql('DELETE FROM jardueras WHERE id = ?', [id]);
+
+    let transaction: Transaction = {
+      endpoint: this.url + '/jarduerak/' + id, // Asegúrate de ajustar la URL según la estructura de tu API
+      method: "DELETE",
+      payload: '',
+    };
+    this.addTransaction(transaction);
+    if (this.networkService.getStatus()) {
+      //online gaude. Sinkronizatu
+      this.syncService.synchronize();
+    }
+    this.getKlubak(); // Ajusta este método según tu lógica de actualización de datos
+  }
+
    // Klub bateko jarduerak lortzeko
    async getJarduerak(id: any){
     try {
